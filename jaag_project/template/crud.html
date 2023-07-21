@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'image/home.png' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+   
+</head>
+<body>
+    <div class="container">
+        <div class="col-md-offset-3 col-md-offset-5">
+            <form action="" method="POST" autocomplete="off">
+                {% csrf_token %}
+            <h3 class="page-header text primary text-center"> Registration</h3>
+            <div class="form-group">
+                <label>name</label>
+                <input type="text" class="form-group" name="name"  autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label>age</label>
+                <input type="number" class="form-group" name="age">
+            </div>
+            <div class="form-group">
+                <label>address</label>
+                <input type="text" class="form-group" name="address">
+            </div>
+            <div class="form-group">
+                <label>contact</label>
+                <input type="text" class="form-group" name="contact">
+            </div>
+            <div class="form-group">
+                <label>mail</label>
+                <input type="mail" class="form-group" name="mail">
+            </div>
+            <div class="form-group pull-right">
+                <input type="submit" value="Register" class="btn btn-primary">
+                <input type="reset" value="clear" class=" btn btn-danger">
+            </div>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>

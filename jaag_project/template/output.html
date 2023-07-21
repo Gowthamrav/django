@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>output</title>
+    <style>
+        table{
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+        th,td{
+            padding: 10px;
+        }
+        .center{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+
+    </style>
+</head>
+<body>
+    {%block content%}
+    <table class="center">
+        <tr>
+            <th colspan="2">
+                <center>view details</center><hr>
+            </th>
+        </tr>
+        <tr>
+            <th>name</th>
+            <td>{{name}}</td>
+        </tr>
+        <tr>
+            <th>password</th>
+            <td>{{password}}</td>
+        </tr>
+        <tr>
+            <th>address</th>
+            <td>{{address}}</td>
+        </tr>
+        <tr>
+            <th>email</th>
+            <td>{{email}}</td>
+        </tr>
+
+
+
+    </table>
+
+
+    {%endblock%}
+</body>
+</html>
