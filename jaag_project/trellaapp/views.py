@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from pathlib import Path 
 from .models import data
@@ -60,8 +60,18 @@ from .models import data
 
 ### HOW TO USE CRUD :
 
-def crud(request):
-    if request.method=="POST":
+def crud(request): #127.0.0.1:8000/  home page
+    mydata=data.objects.all()
+    if(mydata!=""):
+        return render(request,"crud.html",{'datas':mydata})
+    else:
+        return render(request,"crud.html")
+
+
+
+
+def adddata(request): # if i summit after filling all detalis in html then summit the summit botton the ACTION  will be come this lines  
+      if request.method=="POST":
         name=request.POST['name']
         age=request.POST['age']
         address=request.POST['address']
@@ -75,4 +85,32 @@ def crud(request):
         obj.contact=contact
         obj.mail=mail
         obj.save()
-    return render(request,"crud.html")
+        mydata=data.objects.all()
+        return redirect('crud') #127.0.0.1:8000/  home page
+      return render(request,"crud.html")
+
+
+def updatedata(request,id): #127.0.0.1:8000/updatedate/id
+    mydata=data.objects.get(id=id)
+    print(mydata)
+    if request.method=='POST':
+        name=request.POST['name']
+        age=request.POST['age']
+        address=request.POST['address']
+        contact=request.POST['contact']
+        mail=request.POST['mail']
+
+        mydata.name=name
+        mydata.age=age
+        mydata.address=address
+        mydata.contact=contact
+        mydata.mail=mail
+        mydata.save()
+        return redirect('crud')
+    return render(request,"update.html",{'data':mydata})
+
+
+def deletedata(request,id): #127.0.0.1:8000/updatedate/id
+     mydata=data.objects.get(id=id) #object(2) it will delete the id based 
+     mydata.delete()
+     return redirect('crud')

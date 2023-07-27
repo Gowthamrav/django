@@ -16,7 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from trellaapp import views
+from trellaapp import views 
+
 
 
 # ###GET AND POST METHOD
@@ -46,5 +47,8 @@ from trellaapp import views
 ## CRUD:
 urlpatterns = [
           path('admin/', admin.site.urls),
-          path('',views.crud),
+          path('',views.crud,name="crud"),
+          path('adddata',views.adddata,name="adddata"),
+          path('updatedata/<int:id>',views.updatedata,name="updatedata"),
+           path('deletadata/<int:id>',views.deletedata,name="deletedata"),
  ]
